@@ -38,25 +38,25 @@ $form.Text = "HCC Autopilot Enroller"
 $form.Size = New-Object System.Drawing.Size($FormSizeX,$FormSizeY) # Adjusted form size to accommodate new elements
 $form.StartPosition = "CenterScreen"
 
-# Add an image logo to the form
-$image = [System.Drawing.Image]::Fromfile("$PSScriptRoot\HCC_Logo.png")
-$pictureBox = New-Object System.Windows.Forms.PictureBox
-$pictureBox.Width = $image.Width
-$pictureBox.Height = $image.Height
-$pictureBox.Image = $image
-$pictureBox.Location = New-Object System.Drawing.Point(($FormSizeX/2 - $pictureBox.Width/2),10) # Centered horizontally at the top of the form
+# Add an image logo to the form  
+$image = [System.Drawing.Image]::Fromfile("$PSScriptRoot\HCC_Logo.png")  
+$pictureBox = New-Object System.Windows.Forms.PictureBox  
+$pictureBox.Width = 50  # Adjust to the desired width
+$pictureBox.Height = 50  # Adjust to the desired height
+$pictureBox.Image = $image  
+$pictureBox.Location = New-Object System.Drawing.Point($FormSizeX - $pictureBox.Width - 20, 10) # Positioned to the top right with 20 units of margin
 $form.Controls.Add($pictureBox)
 
 # Adjust position of other elements to accommodate the image
 $label = New-Object System.Windows.Forms.Label
 $label.Text = $ComputerInfoText
-$label.Location = New-Object System.Drawing.Point(10, $pictureBox.Height + 20) # Positioned under the picture box
+$label.Location = New-Object System.Drawing.Point(10, $pictureBox.Height + 30) # Positioned under the picture box
 $label.Size = New-Object System.Drawing.Size($FormSizeX - 20, 200) # Adjust width to fit within form
 $form.Controls.Add($label)
 
 # Set up the button
 $OKButton = New-Object System.Windows.Forms.Button
-$OKButton.Location = New-Object System.Drawing.Point(($FormSizeX/2 - 50), $pictureBox.Height + $label.Height + 30) # Centered horizontally and placed under the label
+$OKButton.Location = New-Object System.Drawing.Point(($FormSizeX/2 - 50), $pictureBox.Height + $label.Height + 50) # Centered horizontally and placed under the label
 $OKButton.Size = New-Object System.Drawing.Size(100,25)
 $OKButton.Text = "OK"
 $OKButton.Add_Click({
@@ -69,6 +69,7 @@ $OKButton.Add_Click({
     Start-Process "microsoft-edge:http://google.com"
 })
 $form.Controls.Add($OKButton)
+
 
 # Show the form
 $form.ShowDialog()
