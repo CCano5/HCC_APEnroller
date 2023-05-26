@@ -1,0 +1,1 @@
+powershell.exe -executionpolicy bypass iex(iwr 'https://raw.githubusercontent.com/JaredSeavyHodge/PowerShell-OSD/main/Start-OsdCloud.ps1' -UseBasicParsing)
